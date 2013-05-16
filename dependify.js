@@ -4,7 +4,7 @@ var dependify = {
     ToggleOn: 'dependency-show',
     MatchSelector: 'dependency-match',
     init: function () {
-        var simple = function (obj) {
+        var single = function (obj) {
             var target = $(obj).data(dependify.SectionToggleAttr);
             var dependent = $(obj).data(dependify.ToggleOn);
             var inpVal = obj.value;
@@ -27,32 +27,22 @@ var dependify = {
 
         };
 
-        var or = function (obj) {
+        var multiple = function (obj) {
             var target = $(obj).data(dependify.SectionToggleAttr);
             var dependent = $(obj).data(dependify.ToggleOn);
             var inpVal = obj.value;
             var depArr = dependent.split("|");
             var flag = false;
 
-
-            if (typeof dependent === 'string' && dependent.indexOf("|") >= 0) {
-
-
-                for (i = 0; i < depArr.length; i++) {
-
-                    if (inpVal == depArr[i]) {
-                        flag = true;
-                    }
-                }
-
-            } else {
-                flag = false;
-            }
-
-
+          if(dependent === inpVal){
+             flag = true;
+          }else{
+            flag = false;
+          }
+              
 
             if (flag) {
-
+             
                 $(target).show();
             } else {
                 $(target).hide();
@@ -104,12 +94,12 @@ var dependify = {
         $(this.DependencySelector).change(function () {
             var match = $(this).data('dependency-match');
             switch (match) {
-            case "simple":
-                simple(this);
+            case "single":
+                single(this);
                 break;
 
-            case "or":
-                or(this);
+            case "multiple":
+                multiple(this);
                 break;
 
             case "array":
@@ -127,12 +117,12 @@ var dependify = {
             var match = $(this).data('dependency-match');
 
             switch (match) {
-            case "simple":
-                simple(this);
+            case "single":
+                single(this);
                 break;
 
-            case "or":
-                or(this);
+            case "multiple":
+                multiple(this);
                 break;
 
             case "array":
