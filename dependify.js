@@ -5,8 +5,8 @@ var dependify = {
     MatchSelector: 'dependency-match',
     init: function () {
         var simple = function (obj) {
-            var target = $(obj).data('dependency-child');
-            var dependent = $(obj).data('dependency-show');
+            var target = $(obj).data(dependify.SectionToggleAttr);
+            var dependent = $(obj).data(dependify.ToggleOn);
             var inpVal = obj.value;
 
 
@@ -28,17 +28,19 @@ var dependify = {
         };
 
         var or = function (obj) {
-            var target = $(obj).data('dependency-child');
-            var dependent = $(obj).data('dependency-show');
+            var target = $(obj).data(dependify.SectionToggleAttr);
+            var dependent = $(obj).data(dependify.ToggleOn);
             var inpVal = obj.value;
-            var inpArr = [];
+            var depArr = dependent.split("|");
             var flag = false;
 
-            if (typeof dependent === 'string' && dependent.indexOf("|") >= 0) {
-                inpArr = dependent.split("|");
 
-                for (i = 0; i < inpArr.length; i++) {
-                    if (inpVal == inpArr[i]) {
+            if (typeof dependent === 'string' && dependent.indexOf("|") >= 0) {
+
+
+                for (i = 0; i < depArr.length; i++) {
+
+                    if (inpVal == depArr[i]) {
                         flag = true;
                     }
                 }
@@ -47,7 +49,10 @@ var dependify = {
                 flag = false;
             }
 
+
+
             if (flag) {
+
                 $(target).show();
             } else {
                 $(target).hide();
@@ -56,40 +61,43 @@ var dependify = {
         };
 
         var array = function (obj) {
-          
-          var target = obj.getAttribute('data-dependency-child');
-          var dependent = $(obj).data('dependency-show');
-          var inpVal = obj.value;
-          var inpArr = target.split("|");
-          var depArr = $(obj).data('dependency-show').split("|");
-          var flag = false;
-                    
-          if(inpArr.length === depArr.length){
-          
-            for(i = 0; i < inpArr.length; i++){
-              if(depArr[i] == inpVal){
-                target = inpArr[i]; 
-                flag = true;
-              }
-              
-              
-              
-            }
-            
-           alert(flag);
 
-           if (flag) {
-               $(target).show();
-            } else {
-              for(i=0; i< inpArr.length;i++){
-                 $(inpArr[i]).hide();
-               }
+            var target = $(obj).data(dependify.SectionToggleAttr);
+            var dependent = $(obj).data(dependify.ToggleOn);
+            var inpVal = obj.value;
+            var tarArr = target.split("|");
+            var depArr = dependent.split("|");
+            var flag = false;
+
+            if (tarArr.length === depArr.length) {
+                for (i = 0; i < tarArr.length; i++) {
+                    $(tarArr[i]).hide();
+                }
+
+
+                for (i = 0; i < tarArr.length; i++) {
+                    if (depArr[i] == inpVal) {
+                        target = tarArr[i];
+                        flag = true;
+                    }
+
+
+
+                }
+
+
+                if (flag) {
+                    $(target).show();
+                } else {
+                    for (i = 0; i < tarArr.length; i++) {
+                        $(tarArr[i]).hide();
+                    }
+                }
+
             }
-          
-          }
-            
-          
-          
+
+
+
 
         };
 
