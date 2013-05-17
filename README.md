@@ -16,7 +16,7 @@ You will need to apply some data-attributes to the element you want to hide and 
 Functions
 ============
 
-#Single
+###Single
 Hide and show a single element.
 
 ```html
@@ -34,7 +34,7 @@ Hide and show a single element.
 
 ```
 
-#Multiple
+###Multiple
 Hide and show multiple elements
 ```html
 <div class="container">
@@ -53,7 +53,24 @@ Hide and show multiple elements
 
 ```
 
-#Array
+###Array
+Hide and show multiple elements
+```html
+<div class="container">
 
+  <select class="dependency" data-dependency-child="#1|#1,#2|#1,#2,#3" data-dependency-show="1|2|3" data-dependency-match="array" >
+    <option value="" selected></option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  
+  <div id="1" style="background-color:red;">Div 1</div>
+  <div id="2" style="background-color:green;">Div 2</div>
+  <div id="3" style="background-color:green;">Div 3</div>
+  
+</div>
+
+```
 
 Demo: http://jsbin.com/iluqal/40/
