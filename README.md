@@ -12,6 +12,10 @@ You will need to apply some data-attributes to the element you want to hide and 
 + **data-dependency-show** set this to what you want the element to show on.
 + **data-dependency-match** set this to what function  you would like to use.
 
+You will also need to add a class to the element you want to trigger the change.
+
++ **dependency**
+
 ============
 Functions
 ============
@@ -54,7 +58,8 @@ Hide and show multiple elements
 ```
 
 ###Array
-Hide and show multiple elements
+Hide and show a selected number of elements.
+
 ```html
 <div class="container">
 
@@ -73,4 +78,4 @@ Hide and show multiple elements
 
 ```
 
-Demo: http://jsbin.com/iluqal/40/
+#Demo: http://jsbin.com/iluqal/40/
