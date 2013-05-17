@@ -8,9 +8,9 @@ A JavaScript library to hide and show elements on a page.
 #Setup
 You will need to apply some data-attributes to the element you want to hide and show.
 
-**data-dependency-child** set this to the target you want to hide or show. 
-**data-dependency-show** set this to what you want the element to hide and show on.
-**data-dependency-match** set this to what type of  you would like to use.
++ **data-dependency-child** set this to the target you want to hide or show. 
++ **data-dependency-show** set this to what you want the element to hide and show on.
++ **data-dependency-match** set this to what type of  you would like to use.
 
 ============
 
