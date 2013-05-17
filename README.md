@@ -78,4 +78,4 @@ Hide and show a selected number of elements.
 
 ```
 
-#Demo: http://jsbin.com/iluqal/40/
+###Demo: http://jsbin.com/iluqal/40/
